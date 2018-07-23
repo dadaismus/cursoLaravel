@@ -3,9 +3,15 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Course::class, function (Faker $faker) {
-    return [
-        'name' = $faker->sentence;
-        'status' = $faker->randomElement([App\Course::PUBLISHED], \App\Course::PENDING, \App\Course::REJECTED)];
+        $name = $faker->sentence;
+        $status = $faker->randomElement(
+            [
+                \App\Course::PUBLISHED,
+                \App\Course::PENDING,
+                \App\Course::REJECTED
+        ]
+        );
+
         return[
             'teacher_id' => \App\Teacher::all()->random()->id,
             'category_id' => \App\Category::all()->random()->id,
